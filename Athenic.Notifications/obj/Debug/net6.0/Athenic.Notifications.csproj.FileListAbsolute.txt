@@ -1,0 +1,17 @@
+C:\Users\ACER\source\repos\AthenicConsult\Athenic.Notifications\bin\Debug\net6.0\Athenic.Notifications.deps.json
+C:\Users\ACER\source\repos\AthenicConsult\Athenic.Notifications\bin\Debug\net6.0\Athenic.Notifications.runtimeconfig.json
+C:\Users\ACER\source\repos\AthenicConsult\Athenic.Notifications\bin\Debug\net6.0\Athenic.Notifications.dll
+C:\Users\ACER\source\repos\AthenicConsult\Athenic.Notifications\bin\Debug\net6.0\Athenic.Notifications.pdb
+C:\Users\ACER\source\repos\AthenicConsult\Athenic.Notifications\bin\Debug\net6.0\AthenicConsulting.Core.dll
+C:\Users\ACER\source\repos\AthenicConsult\Athenic.Notifications\bin\Debug\net6.0\AthenicConsulting.Core.pdb
+C:\Users\ACER\source\repos\AthenicConsult\Athenic.Notifications\obj\Debug\net6.0\Athenic.Notifications.csproj.AssemblyReference.cache
+C:\Users\ACER\source\repos\AthenicConsult\Athenic.Notifications\obj\Debug\net6.0\Athenic.Notifications.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ACER\source\repos\AthenicConsult\Athenic.Notifications\obj\Debug\net6.0\Athenic.Notifications.AssemblyInfoInputs.cache
+C:\Users\ACER\source\repos\AthenicConsult\Athenic.Notifications\obj\Debug\net6.0\Athenic.Notifications.AssemblyInfo.cs
+C:\Users\ACER\source\repos\AthenicConsult\Athenic.Notifications\obj\Debug\net6.0\Athenic.Notifications.csproj.CoreCompileInputs.cache
+C:\Users\ACER\source\repos\AthenicConsult\Athenic.Notifications\obj\Debug\net6.0\Athenic.Notifications.csproj.CopyComplete
+C:\Users\ACER\source\repos\AthenicConsult\Athenic.Notifications\obj\Debug\net6.0\Athenic.Notifications.dll
+C:\Users\ACER\source\repos\AthenicConsult\Athenic.Notifications\obj\Debug\net6.0\refint\Athenic.Notifications.dll
+C:\Users\ACER\source\repos\AthenicConsult\Athenic.Notifications\obj\Debug\net6.0\Athenic.Notifications.pdb
+C:\Users\ACER\source\repos\AthenicConsult\Athenic.Notifications\obj\Debug\net6.0\Athenic.Notifications.genruntimeconfig.cache
+C:\Users\ACER\source\repos\AthenicConsult\Athenic.Notifications\obj\Debug\net6.0\ref\Athenic.Notifications.dll

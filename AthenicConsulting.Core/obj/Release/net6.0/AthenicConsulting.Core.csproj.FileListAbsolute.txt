@@ -1,0 +1,14 @@
+C:\Users\ACER\source\repos\AthenicConsult\AthenicConsulting.Core\bin\Release\net6.0\AthenicConsulting.Core.deps.json
+C:\Users\ACER\source\repos\AthenicConsult\AthenicConsulting.Core\bin\Release\net6.0\AthenicConsulting.Core.runtimeconfig.json
+C:\Users\ACER\source\repos\AthenicConsult\AthenicConsulting.Core\bin\Release\net6.0\AthenicConsulting.Core.dll
+C:\Users\ACER\source\repos\AthenicConsult\AthenicConsulting.Core\bin\Release\net6.0\AthenicConsulting.Core.pdb
+C:\Users\ACER\source\repos\AthenicConsult\AthenicConsulting.Core\obj\Release\net6.0\AthenicConsulting.Core.csproj.AssemblyReference.cache
+C:\Users\ACER\source\repos\AthenicConsult\AthenicConsulting.Core\obj\Release\net6.0\AthenicConsulting.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ACER\source\repos\AthenicConsult\AthenicConsulting.Core\obj\Release\net6.0\AthenicConsulting.Core.AssemblyInfoInputs.cache
+C:\Users\ACER\source\repos\AthenicConsult\AthenicConsulting.Core\obj\Release\net6.0\AthenicConsulting.Core.AssemblyInfo.cs
+C:\Users\ACER\source\repos\AthenicConsult\AthenicConsulting.Core\obj\Release\net6.0\AthenicConsulting.Core.csproj.CoreCompileInputs.cache
+C:\Users\ACER\source\repos\AthenicConsult\AthenicConsulting.Core\obj\Release\net6.0\AthenicConsulting.Core.dll
+C:\Users\ACER\source\repos\AthenicConsult\AthenicConsulting.Core\obj\Release\net6.0\refint\AthenicConsulting.Core.dll
+C:\Users\ACER\source\repos\AthenicConsult\AthenicConsulting.Core\obj\Release\net6.0\AthenicConsulting.Core.pdb
+C:\Users\ACER\source\repos\AthenicConsult\AthenicConsulting.Core\obj\Release\net6.0\AthenicConsulting.Core.genruntimeconfig.cache
+C:\Users\ACER\source\repos\AthenicConsult\AthenicConsulting.Core\obj\Release\net6.0\ref\AthenicConsulting.Core.dll

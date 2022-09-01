@@ -1,0 +1,23 @@
+.nav-item {
+    font-size: 25px;
+}
+
+.nav-link .active {
+    color: white;
+}
+
+body {
+    margin: 0px;
+    font-family: Arial;
+    line-height: 20px;
+}
+
+#header {
+    height: 20px;
+    background: #222;
+    color: white;
+}
+
+#content {
+    min-height: 90vh;
+}

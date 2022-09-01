@@ -1,0 +1,33 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   
+   @{ await Html.RenderPartialAsync("/Views/Shared/Components/Styles/_Styles.cshtml"); }
+</head>
+
+<body class="g-sidenav-show  bg-gray-200">
+
+    @{
+        await Html.RenderPartialAsync("/Views/Office/Shared/_MainMenu.cshtml");
+    }
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg" style="min-height: 60vh;">
+        @{
+            await Html.RenderPartialAsync("/Views/Office/Shared/_Nav.cshtml");
+        }
+        <div class="container">
+            @RenderBody()
+        </div>
+
+    </main>
+    @{
+        await Html.RenderPartialAsync("/Views/Office/Shared/_UIConfigurator.cshtml");
+        await Html.RenderPartialAsync("/Views/Shared/Components/Scripts/_Scripts.cshtml");
+    }
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

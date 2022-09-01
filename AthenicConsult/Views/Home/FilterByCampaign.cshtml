@@ -1,0 +1,13 @@
+﻿@model FilterByCampaignViewModel
+
+@{
+    ViewData["Title"] = "Campaign Filter Page";
+    var span = "<span><i class=\"fa fa-close\" style=\"font-size:20px\"> </i></span>";
+    var ancorTagProperties = "class=\"btn btn-primary\" asp-action=\"Index\" asp-controller=\"Home\"";
+    var heading = $"Popular Texts by Campaign: <a {ancorTagProperties}>{Model.Campaign.CampaignType.GetDisplayName()} {span} </a>";
+}
+
+@{
+    await Html.RenderPartialAsync("/Views/Shared/Components/_CenterHeading.cshtml", heading);
+    await Html.RenderPartialAsync("/Views/Shared/Components/_CampaignImages.cshtml", Model.CampaignFolders);
+}

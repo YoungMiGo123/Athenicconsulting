@@ -1,0 +1,14 @@
+﻿@model LandingPageViewModel
+@{
+    ViewData["Title"] = "Athenic Consulting Landing Page";
+}
+
+@{
+    await Html.RenderPartialAsync("/Views/Shared/Components/_Slide.cshtml");
+    await Html.RenderPartialAsync("/Views/Shared/Components/_CenterHeading.cshtml", "Popular Texts");
+    await Html.RenderPartialAsync("/Views/Shared/Components/_CampaignImages.cshtml", Model.CampaignFolders);
+    await Html.RenderPartialAsync("/Views/Shared/Components/_CenterHeading.cshtml", "Explore Industries");
+    await Html.RenderPartialAsync("/Views/Shared/Components/_ExploreIndustries.cshtml", Model.Industries);
+
+}
+

@@ -1,0 +1,12 @@
+﻿@using AthenicConsulting.Office.Office.ViewModels
+@model CreateCampaignViewModel
+
+
+@{
+    ViewData["Title"] = "Create Campaign Page";
+    Layout = "_AdminLayout";
+}
+
+@{
+  await Html.RenderPartialAsync("/Views/Office/Shared/_CreateCampaign.cshtml", Model);
+}

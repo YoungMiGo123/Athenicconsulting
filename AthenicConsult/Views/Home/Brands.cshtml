@@ -1,0 +1,18 @@
+﻿@model BrandViewModel 
+
+@{
+    ViewData["Title"] = "Explore Brands Page";
+}
+<div class="row" style="margin-bottom:20px;">
+    <div class="col-12">
+        <div style="text-align:center;">
+            <h1>
+                Explore Popular Brand Texts
+            </h1>
+        </div>
+    </div>
+</div>
+
+@{
+   await Html.RenderPartialAsync("/Views/Shared/Components/_ExploreIndustryBrands.cshtml", Model);
+}

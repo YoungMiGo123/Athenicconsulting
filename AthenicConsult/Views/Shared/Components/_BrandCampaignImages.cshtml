@@ -1,0 +1,39 @@
+﻿@using AthenicConsulting.Core.Data.Entity
+@using AthenicConsulting.Core.Utitlies
+@model List<CampaignFolder>
+
+
+@foreach (var campaignFolder in Model)
+{
+    if (campaignFolder?.Images != null && campaignFolder.Images.Any())
+    {
+        <div class="row">
+            <div class="col-12">
+                <div style="text-align:left;margin-bottom:20px;padding:15px;">
+                    <h1>
+                        @campaignFolder.CampaignType.GetDisplayName()
+                    </h1>
+                </div>
+            </div>
+            @foreach (var img in campaignFolder.Images)
+            {
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card p-3 mb-5 bg-white rounded" style="border:none;">
+                        <img src="@img" style="width:auto; height:500px;" />
+                        <div class="card-body">
+                            <form asp-action="FilterByBrand" asp-controller="Home" asp-route-brandId="@campaignFolder.BrandId">
+                                <button class="btn btn-primary" style="padding:7px;margin:5px;" type="submit"> @campaignFolder.BrandName </button>
+                            </form>
+                            <form asp-action="FilterByCampaign" asp-controller="Home" asp-route-campaignType="@campaignFolder.CampaignType">
+                                <button class="btn btn-secondary" style="padding:7px;margin:5px;" type="submit"> @campaignFolder.CampaignType.GetDisplayName() </button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+
+}
+

@@ -1,0 +1,42 @@
+﻿@model DashboardViewModel
+
+@{
+    ViewData["Title"] = "Office Home Page";
+    Layout = "_AdminLayout";
+}
+@if (Model.ShouldDisplayMessage)
+{
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    @Model.Message
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+        <div class="card" style="width:400px">
+            <img class="card-img-top" src="/athenictemplate/images/brand_template.jpg" alt="Card image" style="width:100%; min-height:300px;">
+            <div class="card-body">
+                <h4 class="card-title">Create Brand</h4>
+                <p class="card-text">To add a new brand, click on the below link</p>
+                <a asp-action="CreateBrand" asp-controller="Office" class="btn btn-primary">Start Brand Journey</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+        <div class="card" style="width:400px">
+            <img class="card-img-top" src="/athenictemplate/images/campaign_template.jpg" alt="Card image" style="width:100%; min-height:300px;">
+            <div class="card-body">
+                <h4 class="card-title">Create Campaign</h4>
+                <p class="card-text">To add a new campaign and link it to a brand, please click the below buttom</p>
+                <a asp-action="CreateCampaign" asp-controller="Office" class="btn btn-primary">Start Campaign Journey</a>
+            </div>
+        </div>
+    </div>
+</div>

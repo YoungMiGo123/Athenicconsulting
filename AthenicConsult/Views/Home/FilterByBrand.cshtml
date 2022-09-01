@@ -1,0 +1,23 @@
+﻿@model FilterByBrandViewModel
+
+@{
+    ViewData["Title"] = "Brand Filter Page";
+}
+<div class="row" style="margin-bottom:20px;">
+    <div class="col-12">
+        <div style="text-align:center;">
+            <h1>
+                Popular Texts for Brand: 
+                <a class="btn btn-primary" asp-action="Index" asp-controller="Home">
+                    @Model.Brand.Name
+                    <span><i class="fa fa-close" style="font-size:20px"> </i></span>
+                </a>
+            </h1>
+        </div>
+    </div>
+</div>
+
+
+@{
+   await Html.RenderPartialAsync("/Views/Shared/Components/_BrandCampaignImages.cshtml", Model.CampaignFolders);
+}

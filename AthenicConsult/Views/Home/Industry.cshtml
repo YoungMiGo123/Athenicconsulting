@@ -1,0 +1,17 @@
+﻿@model IndustryViewModel
+@{
+    ViewData["Title"] = "Explore Industries Page";
+}
+<div class="row" style="margin-bottom:20px;">
+    <div class="col-12">
+        <div style="text-align:center;">
+            <h1>
+                Explore Industries
+            </h1>
+        </div>
+    </div>
+</div>
+
+@{
+     await Html.RenderPartialAsync("/Views/Shared/Components/_ExploreIndustries.cshtml", Model.Industries);
+}

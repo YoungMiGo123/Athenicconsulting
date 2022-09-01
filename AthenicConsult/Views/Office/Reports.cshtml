@@ -1,0 +1,50 @@
+﻿@model ReportsViewModel
+@{
+    ViewData["Title"] = "Office Reports Page";
+    Layout = "_AdminLayout";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card my-4">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                    <h6 class="text-white text-capitalize ps-3">Users Subscribed To News Letter</h6>
+                </div>
+            </div>
+            <div class="card-body px-0 pb-2">
+                <div class="table-responsive p-0">
+                    <table class="table align-items-center justify-content-center mb-0">
+                        <thead>
+                            <tr>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Id</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Email</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Subscribed</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Created Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var lead in Model.Leads)
+                            {
+                                <tr>
+
+                                    <td>
+                                        <p class="text-sm font-weight-bold mb-0">@lead.Id</p>
+                                    </td>
+                                    <td>
+                                        <span class="text-xs font-weight-bold">@lead.Email</span>
+                                    </td>
+                                    <td>
+                                        <span class="text-xs font-weight-bold">@lead.Subscribed</span>
+                                    </td>
+                                    <td>
+                                        <span class="text-xs font-weight-bold">@lead.CreatedDate</span>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
