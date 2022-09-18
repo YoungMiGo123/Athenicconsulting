@@ -135,7 +135,7 @@ namespace AthenicConsulting.Office.Office.Models.Office.Services
             return selectList;
         }
 
-        public async Task<List<SelectListItem>> GetBrandsAsync()
+        public async Task<List<SelectListItem>> GetBrandsTypesAsync()
         {
             var brands = await _unitOfWork.BrandRepo.GetAllAsync<Brand>();
             return brands.Select(x => new SelectListItem
@@ -143,6 +143,18 @@ namespace AthenicConsulting.Office.Office.Models.Office.Services
                 Text = x.Name,
                 Value = $"{x.Id}"
             }).ToList();
+        }
+
+        public List<Campaign> GetCampaigns()
+        {
+            var campaigns = _unitOfWork.CampaignRepo.GetAll<Campaign>(includeProperties: "Brand");
+            return campaigns.ToList();
+        }
+
+        public async Task<List<Brand>> GetBrandsAsync()
+        {
+            var brands = await _unitOfWork.BrandRepo.GetAllAsync<Brand>();
+            return brands.ToList();
         }
     }
 }

@@ -13,7 +13,7 @@ namespace AthenicConsulting.Office.Office.Interfaces
         public Brand UpdateBrand(Brand brand);
         public bool ArchiveBrand(Brand brand);
         public Brand GetBrand(int BrandId);
-        public Task<List<SelectListItem>> GetBrandsAsync();
+        public Task<List<SelectListItem>> GetBrandsTypesAsync();
         public Task<Campaign> CreateCampaign(CreateCampaignViewModel campaign);
         public bool DeleteCampaign(Campaign campaign);
         public Campaign UpdateCampaign(Campaign campaign);
@@ -21,6 +21,8 @@ namespace AthenicConsulting.Office.Office.Interfaces
         public Campaign GetCampaign(int BrandId);
         public Task<List<SelectListItem>> GetIndustriesListAsync();
         public List<SelectListItem> GetCampaignTypes();
+        public List<Campaign> GetCampaigns();
+        public Task<List<Brand>> GetBrandsAsync();
         public IFileHelper FileHelper { get; set; }
         public ILeadService LeadService { get; set; }
         public IUserService UserService { get; set; } 

@@ -8,7 +8,7 @@
 
 body {
     margin: 0px;
-    font-family: Arial;
+    font-family: 'Space mono';
     line-height: 20px;
 }
 
@@ -20,4 +20,20 @@ body {
 
 #content {
     min-height: 90vh;
+}
+
+footer {
+    font-family: 'Space mono';
+    background-color: #ed6524 !important;
+}
+
+.navbar {
+    background-color: #ed6524 !important;
+}
+
+.center-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }

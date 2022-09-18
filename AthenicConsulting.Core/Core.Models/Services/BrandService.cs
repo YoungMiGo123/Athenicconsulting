@@ -25,7 +25,8 @@ namespace AthenicConsulting.Core.Core.Models.Services
 
         public IEnumerable<Brand> GetAllBrands(int count = 50)
         {
-            return _unitOfWork.BrandRepo.GetAll<Brand>(count);
+            var brands = _unitOfWork.BrandRepo.GetAll<Brand>(orderBy: x => x.OrderBy(y => Guid.NewGuid())).Take(count);
+            return brands;
         }
 
         public Brand GetBrandById(int id)

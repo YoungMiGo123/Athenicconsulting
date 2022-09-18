@@ -1,15 +1,15 @@
 ﻿@using AthenicConsulting.Core.Data.Entity
 @using AthenicConsulting.Core.Utitlies
-@model List<CampaignFolder> 
+@model List<CampaignFolder>
 
 <div class="row">
     @foreach (var campaignFolder in Model)
     {
         @foreach (var img in campaignFolder?.Images ?? new List<string>())
         {
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="card p-3 mb-5 bg-white rounded" style="border:none;">
-                    <img src="@img" style="width:auto; height:500px;" />
+            <div class="col-lg-4 col-md-6 col-12">
+                <img src="@img" style="width:max-content; height:700px; padding:10px; margin: 10px;" />
+                <div class="card p-3 mb-5 bg-white rounded" style="border:none; width:max-content;">
                     <div class="card-body">
                         <form asp-action="FilterByBrand" asp-controller="Home" asp-route-brandId="@campaignFolder.BrandId">
                             <button class="btn btn-primary" style="padding:7px;margin:5px;" type="submit"> @campaignFolder.BrandName </button>

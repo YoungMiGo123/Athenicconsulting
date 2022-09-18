@@ -1,4 +1,6 @@
-﻿namespace AthenicConsulting.Core.ViewModels
+﻿using AthenicConsulting.Core.Core.Interfaces.Repositories;
+
+namespace AthenicConsulting.Core.ViewModels
 {
     public class CreateAccountViewModel
     {
@@ -7,5 +9,6 @@
         public string Email { get; set; }
         public string Password { get; set; }    
         public bool RememberMe { get; set; }
+        public RoleFlag? RoleFlag { get; set; }
     }
 }

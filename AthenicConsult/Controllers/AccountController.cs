@@ -71,7 +71,11 @@ namespace AthenicConsulting.Controllers
         {
             try
             {
-                var user = await _userService.CreateUser(createAccountViewModel, RoleFlag.Admin);
+                if(createAccountViewModel == null)
+                {
+                    return RedirectToAction("CreatedAccount", "Account");
+                }
+                var user = await _userService.CreateUser(createAccountViewModel, !createAccountViewModel.RoleFlag.HasValue ? RoleFlag.Basic : createAccountViewModel.RoleFlag.Value);
                 if (user != null && !string.IsNullOrEmpty(user.Email))
                 {
                     var sent = await _userService.SendAccountCofirmationEmail(new SendEmailModel
@@ -79,10 +83,7 @@ namespace AthenicConsulting.Controllers
                         ToEmail = user.Email,
                         Subject = "Please confirm your athenic consulting account",
                     });
-                    if (sent)
-                    {
-                        return RedirectToAction("Index", "Office");
-                    }
+                    return RedirectToAction("Index", "Office");
                 }
             }
             catch(Exception ex)
