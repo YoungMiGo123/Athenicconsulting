@@ -22,7 +22,7 @@ namespace AthenicConsulting.Office.Office.Interfaces
         public Task<List<SelectListItem>> GetIndustriesListAsync();
         public List<SelectListItem> GetCampaignTypes();
         public List<Campaign> GetCampaigns();
-        public Task<List<Brand>> GetBrandsAsync();
+        public List<Brand> GetBrands();
         public IFileHelper FileHelper { get; set; }
         public ILeadService LeadService { get; set; }
         public IUserService UserService { get; set; } 

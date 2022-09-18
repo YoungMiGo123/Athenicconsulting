@@ -151,9 +151,9 @@ namespace AthenicConsulting.Office.Office.Models.Office.Services
             return campaigns.ToList();
         }
 
-        public async Task<List<Brand>> GetBrandsAsync()
+        public List<Brand> GetBrands()
         {
-            var brands = await _unitOfWork.BrandRepo.GetAllAsync<Brand>();
+            var brands = _unitOfWork.BrandRepo.GetAll<Brand>(includeProperties: "Industry");
             return brands.ToList();
         }
     }

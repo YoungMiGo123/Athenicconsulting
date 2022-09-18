@@ -71,11 +71,11 @@ namespace AthenicConsulting.Controllers
             return View(vm);
         }
         [HttpGet]
-        public async Task<IActionResult> ManageBrandsAsync()
+        public IActionResult ManageBrands()
         {
             var vm = new ManageBrandsViewModel
             {
-                Brands = await _officeService.GetBrandsAsync()
+                Brands = _officeService.GetBrands()
             };
             return View(vm);
         }
