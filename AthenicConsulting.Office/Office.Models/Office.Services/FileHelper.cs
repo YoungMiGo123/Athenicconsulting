@@ -30,10 +30,14 @@ namespace AthenicConsulting.Office.Office.Models.Office.Services
             streamWriter.WriteLine(values);
             return true;
         }
-        public FileResult CreateBrandFolder(string brandName)
+        public FileResult CreateBrandFolder(string brandName, bool deleteExisting = false)
         {
             var fileResult = new FileResult { FileName = string.Empty, UploadedSuccessfully = false };
             var path = @$"{_hostEnvironment.WebRootPath}\marketdata\Brands\{brandName}";
+            if (Directory.Exists(path) && deleteExisting)
+            {
+                Directory.Delete(path, true);
+            }
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);
@@ -48,10 +52,14 @@ namespace AthenicConsulting.Office.Office.Models.Office.Services
             return fileResult;
         }
 
-        public FileResult CreateCampaignFolder(string brandName, string campaignName)
+        public FileResult CreateCampaignFolder(string brandName, string campaignName, bool deleteExisting = false)
         {
             var fileResult = new FileResult { FileName = string.Empty, UploadedSuccessfully = false };
             var path = @$"{_hostEnvironment.WebRootPath}\marketdata\Brands\{brandName}\Campaigns\{campaignName}";
+            if (Directory.Exists(path) && deleteExisting)
+            {
+                Directory.Delete(path, true);
+            }
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);
@@ -66,11 +74,15 @@ namespace AthenicConsulting.Office.Office.Models.Office.Services
             return fileResult;
         }
 
-        public FileResult UploadFile(string pathToUpload, IFormFile formFile)
+        public FileResult UploadFile(string pathToUpload, IFormFile formFile, bool deleteExisting = false)
         {
             var fileResult = new FileResult { FileName = string.Empty, UploadedSuccessfully = false };
             try
             {
+                if(Directory.Exists(pathToUpload) && deleteExisting)
+                {
+                    Directory.Delete(pathToUpload, true);
+                }
                 if (!Directory.Exists(pathToUpload))
                 {
                     Directory.CreateDirectory(pathToUpload);
@@ -109,6 +121,16 @@ namespace AthenicConsulting.Office.Office.Models.Office.Services
                 fileResults.Add(fileResult);
             } 
             return fileResults;
+        }
+
+        public void UpdateFolderName(string oldName, string newName)
+        {
+             Directory.Move(oldName, newName);
+        }
+
+        public void UpdateFileName(string oldName, string newName)
+        {
+            File.Move(oldName, newName);
         }
     }
 }

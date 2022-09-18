@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\AthenicConsulting.Core\AthenicConsulting.Core.csproj" />
     <ProjectReference Include="..\AthenicConsulting.Identity\AthenicConsulting.Identity.csproj" />
+    <ProjectReference Include="..\AthenicConsulting.Office.Views\AthenicConsulting.Office.Views.csproj" />
   </ItemGroup>
 
   <ItemGroup>

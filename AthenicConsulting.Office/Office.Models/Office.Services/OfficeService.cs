@@ -6,23 +6,26 @@ using AthenicConsulting.Core.Utitlies;
 using AthenicConsulting.Identity.Identity.Interfaces;
 using AthenicConsulting.Office.Office.Interfaces;
 using AthenicConsulting.Office.Office.ViewModels;
+using AthenicConsulting.Office.Views.Brands.ViewModels;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AthenicConsulting.Office.Office.Models.Office.Services
 {
     public class OfficeService : IOfficeService
     {
+        private readonly IHostingEnvironment _hostEnvironment;
         private IUnitOfWork _unitOfWork { get; set; }
         public IFileHelper FileHelper { get; set; }
         public ILeadService LeadService { get; set; }
         public IUserService UserService { get; set; }
-
-        public OfficeService(IUnitOfWork unitOfWork, IFileHelper fileHelper, ILeadService leadService, IUserService userService)
+        public OfficeService(IUnitOfWork unitOfWork, IFileHelper fileHelper, ILeadService leadService, IUserService userService, IHostingEnvironment hostEnvironment)
         {
             _unitOfWork = unitOfWork;
             FileHelper = fileHelper;
             LeadService = leadService;
             UserService = userService;
+            _hostEnvironment = hostEnvironment;
         }
 
         public async Task<Brand> CreateBrand(CreateBrandViewModel createBrandViewModel)
@@ -51,9 +54,42 @@ namespace AthenicConsulting.Office.Office.Models.Office.Services
             return softDeletedBrand != null;    
         }
 
-        public Brand UpdateBrand(Brand brand)
+        public Brand UpdateBrand(EditBrandViewModel editBrandViewModel)
         {
-           var updatedBrand = _unitOfWork.BrandRepo.UpdateEntity(brand);
+            var prevBrand = _unitOfWork.BrandRepo.GetById<Brand>(editBrandViewModel.Brand.Id);
+            var brandPath = string.Empty;
+            if (!prevBrand.Name.Equals(editBrandViewModel.Brand.Name, StringComparison.OrdinalIgnoreCase))
+            {
+                var oldPath = @$"{_hostEnvironment.WebRootPath}\marketdata\Brands\{prevBrand.Name}";
+                var newPath = @$"{_hostEnvironment.WebRootPath}\marketdata\Brands\{editBrandViewModel.Brand.Name.Trim()}";
+                brandPath = newPath;
+                prevBrand.Name = editBrandViewModel.Brand.Name.Trim();  
+                FileHelper.UpdateFolderName(oldPath, newPath);
+            }
+            if(editBrandViewModel.Logo != null)
+            {
+                if (string.IsNullOrEmpty(brandPath))
+                {
+                    brandPath = @$"{_hostEnvironment.WebRootPath}\marketdata\Brands\{prevBrand.Name}";
+                }
+                var logoFileResult = FileHelper.UploadFile(@$"{brandPath}\Logo", editBrandViewModel.Logo, deleteExisting: true);
+                prevBrand.Logo = logoFileResult.FileName.Trim();
+            }
+            if (!string.IsNullOrEmpty(editBrandViewModel.SelectedIndustry))
+            {
+                prevBrand.IndustryId = Convert.ToInt32(editBrandViewModel.SelectedIndustry);
+            }
+            if (!string.IsNullOrEmpty(editBrandViewModel.Brand.Description))
+            {
+                prevBrand.Description = editBrandViewModel.Brand.Description;
+            }
+            if (editBrandViewModel.Brand.Deactivatated)
+            {
+                prevBrand.Deactivatated = editBrandViewModel.Brand.Deactivatated;
+                prevBrand.DeactivatedDate = DateTime.UtcNow;
+            }
+            prevBrand.ModifiedDate = DateTime.UtcNow;
+            var updatedBrand = _unitOfWork.BrandRepo.UpdateEntity(prevBrand);
             _unitOfWork.SaveChanges();
             return updatedBrand;
         }

@@ -1,0 +1,98 @@
+﻿@using AthenicConsulting.Office.Views.Brands.ViewModels
+@model EditBrandViewModel
+
+@if (Model.CanDisplayMessage)
+{
+    <div class="alert alert-danger alert-dismissible text-white" role="alert">
+        <span class="text-sm">@Model.Message</span>
+        <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+}
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card" style="padding:10px;">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title">Edit Brand</h4>
+                <p class="card-category">Update the brand information by editing the below form</p>
+            </div>
+            <div class="card-body">
+                <form method="post" asp-action="EditBrand" asp-controller="Office" enctype="multipart/form-data">
+                    <div class="row" style="padding:10px;">
+                        <div class="col-3">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating">Brand Name</label>
+                            </div>
+                        </div>
+                        <div class="col-9">
+                            <div class="form-group bmd-form-group">
+                                <input type="text" asp-for="Brand.Name" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row" style="padding:10px;">
+                        <div class="col-3">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating">Brand Description</label>
+                            </div>
+                        </div>
+                        <div class="col-9">
+                            <div class="form-group bmd-form-group">
+                                <input type="text" asp-for="Brand.Description" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row" style="padding:10px;">
+                        <div class="col-3">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating">Deactivate Brand</label>
+                            </div>
+                        </div>
+                        <div class="col-9">
+                            <div class="form-group bmd-form-group">
+                                <input type="checkbox" asp-for="Brand.Deactivatated">
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row" style="padding:10px;">
+                        <div class="col-3">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating">Logo</label>
+                            </div>
+                        </div>
+                        <div class="col-9">
+                            <div class="form-group bmd-form-group">
+                                <input class="form-control form-control-lg" style="padding:12px;" asp-for="Logo" />
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row" style="padding:10px;">
+                        <div class="col-3">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating">Choose Industry</label>
+                            </div>
+                        </div>
+                        <div class="col-9">
+                            <div class="form-group bmd-form-group">
+                                @Html.DropDownListFor(m => m.SelectedIndustry,Model.IndustryList,Model.Brand.Industry.Name, new { @class = "form-control select-input placeholder-active active focused" })
+
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <button type="submit" class="btn btn-primary pull-right" style="padding:10px;">Update Brand</button>
+                    <div class="clearfix"></div>
+                    <input type="hidden" asp-for="Brand.Id" />
+                    <input type="hidden" asp-for="Brand.IndustryId" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

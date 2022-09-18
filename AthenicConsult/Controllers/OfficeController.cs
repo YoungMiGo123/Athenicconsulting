@@ -39,10 +39,14 @@ namespace AthenicConsulting.Controllers
             return View(vm);
         }
         [HttpPost]
-        public IActionResult CreateBrand(CreateBrandViewModel createBrandViewModel)
+        public async Task<IActionResult> CreateBrandAsync(CreateBrandViewModel createBrandViewModel)
         {
-            _officeService.CreateBrand(createBrandViewModel);
-            return RedirectToAction("Index", new DashboardViewModel { Message = "The brand was successfully created" });
+            var brand = await _officeService.CreateBrand(createBrandViewModel);
+            if (brand != null)
+            {
+                return RedirectToAction("Index", new DashboardViewModel { Message = "The brand was successfully created" });
+            }
+            return View(createBrandViewModel);
         }
 
         [HttpGet]
@@ -56,10 +60,14 @@ namespace AthenicConsulting.Controllers
             return View(vm);
         }
         [HttpPost]
-        public IActionResult CreateCampaign(CreateCampaignViewModel createCampaignViewModel)
+        public async Task<IActionResult> CreateCampaignAsync(CreateCampaignViewModel createCampaignViewModel)
         {
-            _officeService.CreateCampaign(createCampaignViewModel);
-            return RedirectToAction("Index", new DashboardViewModel { Message = "The brand was successfully created" });
+            var campaign = await _officeService.CreateCampaign(createCampaignViewModel);
+            if (campaign != null)
+            {
+                return RedirectToAction("Index", new DashboardViewModel { Message = "The campaign was successfully created" });
+            }
+            return View(createCampaignViewModel);
         }
         [HttpGet]
         public async Task<IActionResult> Reports()
@@ -87,19 +95,57 @@ namespace AthenicConsulting.Controllers
             };
             return View(vm);
         }
-        public IActionResult EditBrand(int brandId)
+        public async Task<IActionResult> EditBrand(int brandId)
         {
-            var vm = new EditBrandViewModel();
+            var industryList = await _officeService.GetIndustriesListAsync();
+            var brand = _officeService.GetBrand(brandId);
+            var vm = new EditBrandViewModel
+            {
+                Brand = brand,
+                IndustryList = industryList
+            };
             return View(vm);
         }
         [HttpPost]
         public IActionResult EditBrand(EditBrandViewModel editBrandViewModel)
         {
+            var updatedBrand = _officeService.UpdateBrand(editBrandViewModel);
+            if (updatedBrand != null)
+            {
+                return RedirectToAction("Index", new DashboardViewModel { Message = "The brand was successfully updated" });
+            }
             return View();
+        }
+        public IActionResult DelteBrand(int brandId)
+        {
+            var brand = _officeService.GetBrand(brandId);
+            var vm = new DeleteBrandViewModel
+            {
+                Brand = brand
+            };
+            return View(vm);
+
+        }
+        [HttpPost]
+        public IActionResult DeleteBrand(DeleteBrandViewModel deleteBrandViewModel)
+        {
+            if (deleteBrandViewModel.ConfirmDelete)
+            {
+                var isDeleted = _officeService.DeleteBrand(deleteBrandViewModel.Brand);
+                if (isDeleted)
+                {
+                     return RedirectToAction("Index", new DashboardViewModel { Message = "The brand was successfully deleted" });
+                }
+            }
+            return View(deleteBrandViewModel);
         }
         public IActionResult EditCampaign(int campaignId)
         {
-            var vm = new EditCampaignViewModel();
+            var campaign = _officeService.GetCampaign(campaignId);
+            var vm = new EditCampaignViewModel()
+            {
+                Campaign = campaign
+            };
             return View(vm);
         }
         [HttpPost]
